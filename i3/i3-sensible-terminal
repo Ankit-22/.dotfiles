@@ -11,10 +11,7 @@
 for terminal in $TERMINAL x-terminal-emulator urxvt rxvt terminator Eterm aterm xterm gnome-terminal roxterm xfce4-terminal termite lxterminal mate-terminal terminology; do
     if command -v $terminal > /dev/null 2>&1; then
     	if [ "$1" = "python" ]; then
-    		echo "log" > ~/.ankit_log
     		echo "true" > ~/.myconfigfile
-    	else
-    		echo "damn $1" > ~/.ankit_log
     	fi
         exec $terminal "$@"
     fi
