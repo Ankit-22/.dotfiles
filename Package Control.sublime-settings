@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"1337 Color Scheme",
+		"3024 Color Scheme",
+		"Babel",
+		"Base16 Color Schemes",
+		"Color Scheme - Rainbow",
+		"Package Control",
+		"ShellScriptImproved",
+		"Theme - Vim Blackboard",
+		"TypeScript"
+	]
+}
