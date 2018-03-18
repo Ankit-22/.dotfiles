@@ -3,6 +3,7 @@ if [ ! -d ./i3 ]; then
 fi
 
 cp -f ~/.i3/config ./i3/
+cp -f /usr/bin/i3-sensible-terminal ./i3/.
 
 cp -f ~/.zshrc .
 
