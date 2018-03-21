@@ -5,10 +5,6 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-# Change the Desktop BackGround
-
-exec --no-startup-id feh --bg-scale "/home/ankit/Pictures/wallpaper.png"
-
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -160,6 +156,10 @@ bar {
 #       User Modifications Start Here       #
 #                                           #
 # # # # # # # # # # # # # # # # # # # # # # #
+
+# Change the Desktop BackGround
+
+exec --no-startup-id feh --bg-scale "/home/ankit/Pictures/Wallpapers/debian.jpg"
 
 # Start a terminal with alt + t
 bindsym $mod+t exec i3-sensible-terminal
