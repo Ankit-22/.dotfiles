@@ -158,7 +158,6 @@ bar {
 # # # # # # # # # # # # # # # # # # # # # # #
 
 # Change the Desktop BackGround
-
 exec --no-startup-id feh --bg-scale "/home/ankit/Pictures/Wallpapers/debian.jpg"
 
 # Start a terminal with alt + t
@@ -167,7 +166,10 @@ bindsym $mod+t exec i3-sensible-terminal
 # Start unity settings deamon
 exec --no-startup-id unity-settings-daemon
 
+# Print Screen using scrot
 bindsym --release Print exec "scrot -e 'mv $f ~/printscreens/'"
+
+# Start Battery Warning
 exec --no-startup-id ~/.i3/i3-battery-warning
 
 # start a terminal with python virtualenv
@@ -181,15 +183,24 @@ exec --no-startup-id xdotool key alt+w
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 10%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 10%+
 
-# Change Brightness, We need sudo for it. We don't want to type root password everytime, so.
-# Add these lines to /etc/sudoers using visudo 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# To change brightness, we need sudo. We don't want to type root password everytime, so.
+# Add these lines to /etc/sudoers using visudo
 # run: sudo EDITOR=vim visudo
 # then add these lines:
+#
 # 	Cmnd_Alias PASSWORDLESS = /usr/bin/tee
 # 	<yourusername> ALL=(ALL) ALL
 # 	<yourusername> ALL=(ALL) NOPASSWD: PASSWORDLESS
 #
+# These will allow us to run tee with sudo without typing password for user with name <yourusername>
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+# Backlight information is in /sys/class/backlight/<device name> directory. Change Accordingly for other devices
+
+# Brightness Down
 bindsym XF86MonBrightnessDown exec --no-startup-id echo `expr $(cat /sys/class/backlight/*/brightness) - 10` | sudo tee /sys/class/backlight/*/brightness
 
+# Brightness Up
 bindsym XF86MonBrightnessUp exec --no-startup-id echo `expr $(cat /sys/class/backlight/*/brightness) + 10` | sudo tee /sys/class/backlight/*/brightness
