@@ -116,22 +116,27 @@ fi
 alias py3=python3
 alias py=python
 
-# It can set the volume level $1 is percent $2 is '+' or '-'
+# It can set the volume level. $1 is percent, $2 is '+' or '-'
+# Eg. set_audio 10 +       =>    Increases volume by 10%
+# Eg. set_audio 10         =>    sets volume to 10%
 function set_audio() {
 	amixer -D pulse sset Master $1%$2 > /dev/null;
 }
 
-# Open a app
+# Open a app 
+# Eg. open_app nautilus
 function open_app() {
 	$1 $@ > /dev/null 2>&1 &
 }
 
 # Open a file with default app
+# Eg. open_file image.png
 function open_file() {
 	xdg-open $1 > /dev/null 2>&1 &
 }
 
 # It can open any archive file
+# Eg. openarch ankit.zip ankit.tar ankit.b2z ankit.gz
 function openarch() {
 	while [ $# -gt 0 ]; do
 		if [ ! -f "$1" ]; then
@@ -181,6 +186,7 @@ function openarch() {
 }
 
 # My implementation of killall
+# Eg. kill_app nautilus
 function kill_app() {
 	if [ $1 = '-f' ]; then
 		kill -SIGKILL `ps -A | grep $2 | awk {'printf ("%s ", $1)'}`
@@ -190,6 +196,7 @@ function kill_app() {
 }
 
 # Run a c file with one command
+# Eg. runc hello.c
 function runc() {
 	$filename = $1
 	shift
@@ -202,6 +209,7 @@ function runc() {
 }
 
 # Run a cpp file with one command
+# Eg. runcpp hello.cpp
 function runcpp() {
 	$filename = $1
 	shift
