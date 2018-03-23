@@ -220,3 +220,10 @@ function runcpp() {
 		rm -f $filename.out
 	fi
 }
+
+# Zip all git files in a git directory
+# Eg. gitzip name.zip
+function gitzip() {
+	zip $1 `git ls-tree -r master --name-only | awk {'printf("%s ", $1)'}`
+}
+
