@@ -227,3 +227,28 @@ function gitzip() {
 	zip $1 `git ls-tree -r master --name-only | awk {'printf("%s ", $1)'}`
 }
 
+function make_alias_from_files() {
+	FILES=`ls ~/.dir_list | awk {'printf("%s ", $1)'}`
+	for file in $FILES; do
+		alias $file=`cat $file`
+	done
+}
+
+function dir_list() {
+
+	if [ ! -d ~/.dir_list ]; then
+		mkdir ~/.dir_list
+	fi
+
+	if [ $1 = "create" ]; then
+		if [ $# = 3 ]; then
+			echo -n "$3" > ~/.dir_list/$2
+			alias $2=`cat ~/.dir_list/$2`
+		else
+			echo "Create Usage: "
+		fi
+	fi
+
+}
+
+make_alias_from_files
