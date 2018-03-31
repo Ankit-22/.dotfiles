@@ -227,14 +227,13 @@ function gitzip() {
 	zip $1 `git ls-tree -r master --name-only | awk {'printf("%s ", $1)'}`
 }
 
-function make_alias_from_files() {
-	FILES=`ls ~/.dir_list | awk {'printf("%s ", $1)'}`
-	for file in $FILES; do
-		alias $file=`cat $file`
-	done
-}
+# This creates a directory alias (This alias can be used to directly go to that directory.)
+# Ex. diralias create myProject ~/Projects/Java/Android/AndroidStudioProjects/myProject
+# Now this will create myProject alias.
+# If you want to go to '~/Projects/Java/Android/AndroidStudioProjects/myProject' directory just type myProject and ENTER.
 
-function dir_list() {
+# Note: Use absolute path for create command.
+function diralias() {
 
 	if [ ! -d ~/.dir_list ]; then
 		mkdir ~/.dir_list
@@ -248,7 +247,9 @@ function dir_list() {
 			echo "Create Usage: "
 		fi
 	fi
-
 }
 
-make_alias_from_files
+# Load with created aliases
+for file in ~/.dir_list/*; do
+	alias $(basename $file)=`cat $file`
+done
