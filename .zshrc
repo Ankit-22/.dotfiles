@@ -244,12 +244,14 @@ function diralias() {
 			echo -n "$3" > ~/.dir_list/$2
 			alias $2=`cat ~/.dir_list/$2`
 		else
-			echo "Create Usage: "
+			echo "Create Usage: diralias create <name> <direcrtory>"
 		fi
 	fi
 }
 
 # Load with created aliases
-for file in ~/.dir_list/*; do
-	alias $(basename $file)=`cat $file`
-done
+if [ -d ~/.dir_list ]; then
+	for file in ~/.dir_list/*; do
+		alias $(basename $file)=`cat $file`
+	done
+fi
